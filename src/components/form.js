@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-export default function Form({ setTime }) {
+export default function Form({ setTimer, error, setErrorMsg }) {
   const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState(null);
 
   const handleInputChange = e => setInputValue(e.target.value);
   const handleSubmit = e => {
@@ -12,9 +11,9 @@ export default function Form({ setTime }) {
 
     // validation
     if (minutes > 5940) {
-      return setError(`maximum time - 99 hours (5940 minutes)`);
+      return setErrorMsg(`maximum time - 99 hours (5940 minutes)`);
     }
-    setTime(minutes);
+    setTimer(minutes);
   };
 
   return (
